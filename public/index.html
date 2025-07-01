@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastrar Material</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="logo.png" alt="Logo" class="logo-img">
+        <div class="navbar-links">
+            <a href="/" class="active">Cadastrar</a>
+            <a href="/add">Adicionar</a>
+            <a href="/remove">Baixar</a>
+            <a href="/stock">Estoque</a>
+        </div>
+    </nav>
+    <h1>Cadastrar Material</h1>
+    <form action="/api/material" method="POST">
+        <input type="text" name="nome" placeholder="Nome do material" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>

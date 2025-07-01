@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adicionar Material ao Estoque</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script>
+        async function carregarMateriais() {
+            const res = await fetch('/api/materials');
+            const materiais = await res.json();
+            const select = document.getElementById('material_id');
+            materiais.forEach(m => {
+                const opt = document.createElement('option');
+                opt.value = m.id;
+                opt.textContent = m.nome;
+                select.appendChild(opt);
+            });
+        }
+        window.onload = carregarMateriais;
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="logo.png" alt="Logo" class="logo-img">
+        <div class="navbar-links">
+            <a href="/">Cadastrar</a>
+            <a href="/add" class="active">Adicionar</a>
+            <a href="/remove">Baixar</a>
+            <a href="/stock">Estoque</a>
+        </div>
+    </nav>
+    <h1>Adicionar Material ao Estoque</h1>
+    <form action="/api/add" method="POST">
+        <select name="material_id" id="material_id" required></select>
+        <input type="number" name="quantidade" placeholder="Quantidade" min="1" required>
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+</html>
